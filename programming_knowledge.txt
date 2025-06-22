@@ -1,0 +1,222 @@
+# Knowledge Base
+
+## Основы Python
+
+Python - высокоуровневый язык программирования, который широко используется для веб-разработки, анализа данных, искусственного интеллекта и автоматизации задач.
+
+### Синтаксис
+
+```python
+print("Hello, World!")
+
+Переменные
+Переменные в Python объявляются без указания типа данных:
+x = 5
+y = "Hello, World!"
+
+Условные операторы
+Условные операторы позволяют выполнять различные блоки кода в зависимости от условий:
+
+if x > 0:
+    print("x положительное")
+elif x == 0:
+    print("x равно нулю")
+else:
+    print("x отрицательное")
+
+Циклы
+Циклы используются для повторения блоков кода:
+
+for i in range(5):
+    print(i)
+
+while x < 10:
+    print(x)
+    x += 1
+
+Django
+Django - это высокопроизводительный веб-фреймворк, написанный на Python. Он позволяет быстро создавать надежные веб-приложения.
+
+Установка
+Установите Django с помощью pip:
+
+pip install django
+
+Создание проекта
+Создайте новый проект Django:
+
+django-admin startproject myproject
+cd myproject
+
+Создание приложения
+Создайте новое приложение внутри проекта:
+
+python manage.py startapp myapp
+
+Flask
+Flask - это микрофреймворк для создания веб-приложений на Python. Он легко интегрируется для создания REST API.
+
+Установка
+Установите Flask с помощью pip:
+
+pip install flask
+
+Пример простого REST API
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    data = {"message": "Hello, World!"}
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+REST API с Flask
+Создание маршрутов
+Создайте маршруты для обработки запросов:
+
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    users = [{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]
+    return jsonify(users)
+
+@app.route('/api/users/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    user = {"id": user_id, "name": "Alice" if user_id == 1 else "Bob"}
+    return jsonify(user)
+
+Обработка POST-запросов
+Обработка POST-запросов для добавления новых пользователей:
+
+from flask import request
+
+@app.route('/api/users', methods=['POST'])
+def add_user():
+    new_user = request.get_json()
+    users.append(new_user)
+    return jsonify(new_user), 201
+
+Алгоритмы и структуры данных
+Стек (Stack)
+Стек - это структура данных, которая следует принципу "последним пришел - первым ушел" (LIFO).
+
+Очередь (Queue)
+Очередь - это структура данных, которая следует принципу "первым пришел - первым ушел" (FIFO).
+
+Связный список (Linked List)
+Связный список состоит из узлов, каждый из которых содержит данные и ссылку на следующий узел.
+
+Деревья (Trees)
+Деревья - это иерархическая структура данных, состоящая из узлов, где один узел является корнем, а остальные узлы разделены на поддеревья.
+
+Базы данных
+SQL
+SQL - язык структурированных запросов, используемый для управления реляционными базами данных.
+
+NoSQL
+NoSQL - это тип баз данных, который не использует традиционную модель таблиц для хранения данных. Примеры NoSQL баз данных: MongoDB, Cassandra, Redis.
+
+Инструменты разработки
+Git
+Git - распределенная система контроля версий, которая позволяет отслеживать изменения в коде.
+
+Docker
+Docker - платформа для разработки, доставки и выполнения приложений в контейнерах.
+
+VS Code
+Visual Studio Code - популярный текстовый редактор для программирования с множеством расширений и инструментов.
+
+Примеры кода
+Функции в Python
+Функции в Python определяются с помощью ключевого слова def:
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("Alice"))
+
+Классы и объекты в Python
+Классы в Python используются для создания объектов:
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        return f"My name is {self.name} and I am {self.age} years old."
+
+person = Person("Alice", 30)
+print(person.introduce())
+
+Работа с файлами в Python
+Работа с файлами в Python осуществляется с помощью функций open, read, write и close:
+with open('example.txt', 'w') as file:
+    file.write('Hello, World!')
+
+with open('example.txt', 'r') as file:
+    content = file.read()
+    print(content)
+
+Создание REST API на Python
+Использование Flask
+Flask - это легкий и гибкий фреймворк для создания веб-приложений и REST API.
+
+Установка Flask
+pip install flask
+
+Пример простого REST API
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+# Пример данных
+users = [
+    {"id": 1, "name": "Alice", "email": "alice@example.com"},
+    {"id": 2, "name": "Bob", "email": "bob@example.com"}
+]
+
+# Получение списка всех пользователей
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    return jsonify(users)
+
+# Получение пользователя по ID
+@app.route('/api/users/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    user = next((user for user in users if user['id'] == user_id), None)
+    if user is not None:
+        return jsonify(user)
+    else:
+        return jsonify({"error": "User not found"}), 404
+
+# Добавление нового пользователя
+@app.route('/api/users', methods=['POST'])
+def add_user():
+    new_user = request.get_json()
+    new_user['id'] = users[-1]['id'] + 1 if users else 1
+    users.append(new_user)
+    return jsonify(new_user), 201
+
+# Обновление информации о пользователе
+@app.route('/api/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    user = next((user for user in users if user['id'] == user_id), None)
+    if user is not None:
+        updated_data = request.get_json()
+        user.update(updated_data)
+        return jsonify(user)
+    else:
+        return jsonify({"error": "User not found"}), 404
+
+# Удаление пользователя
+@app.route('/api/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    global users
+    users = [user for user in users if user['id'] != user_id]
+    return jsonify({"message": "User deleted"})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
